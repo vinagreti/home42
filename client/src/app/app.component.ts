@@ -23,7 +23,7 @@ export class AppComponent {
     this.http.get('http://localhost:420/user/123')
     .subscribe((res: any) => {
 
-      this.files = res.map(file => {
+      this.files = res.filter(file => file.name.search('mp4') >= 0).map(file => {
         return {
           name: file.name,
           data: this.getDataFromFilename(file.name),
@@ -51,7 +51,13 @@ export class AppComponent {
 
   open(file) {
 
-    this.videoUrl = `http://localhost:420/${file.name}`;
+    this.videoUrl = undefined;
+
+    setTimeout(() => {
+
+      this.videoUrl = `http://localhost:420/${file.name}`;
+
+    }, 100);
 
   }
 

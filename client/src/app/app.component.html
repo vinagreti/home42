@@ -1,17 +1,29 @@
-<button (click)="reload()">RELOAD</button>
+<div fxLayout="row" fxLayoutGap="16px">
 
-<div *ngIf="files">
-  <ol>
-    <li *ngFor="let file of files" (click)="open(file)">
-      {{ file.data.timestamp | date:'short' }} - {{ file.name }}
-    </li>
-  </ol>
-</div>
+  <div fxFlex>
 
-<div *ngIf="videoUrl">
+    <button (click)="reload()">RELOAD</button>
 
-  <video width="320" height="240" controls>
-    <source [src]="videoUrl" type="video/mp4">
-  </video>
+    <div *ngIf="files">
+      <ol>
+        <li *ngFor="let file of files" (click)="open(file)" style="cursor: pointer;">
+          {{ file.data.timestamp | date:'short' }}
+        </li>
+      </ol>
+    </div>
+
+  </div>
+
+  <div fxFlex>
+
+    <div *ngIf="videoUrl">
+
+      <video controls>
+        <source [src]="videoUrl" type="video/mp4">
+      </video>
+
+    </div>
+
+  </div>
 
 </div>
