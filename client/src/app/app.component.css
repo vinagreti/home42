@@ -1,0 +1,12 @@
+.selected {
+  border: 1px solid blue;
+}
+
+.list {
+  max-height: 86vh;
+  overflow: auto;
+  padding: 24px 0;
+  margin: 0;
+  list-style: none;
+
+}

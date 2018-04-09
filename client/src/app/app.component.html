@@ -1,15 +1,15 @@
 <div fxLayout="row" fxLayoutGap="16px">
 
-  <div fxFlex>
+  <div fxFlex="11">
 
     <button (click)="reload()">RELOAD</button>
 
     <div *ngIf="files">
-      <ol>
-        <li *ngFor="let file of files" (click)="open(file)" style="cursor: pointer;">
-          {{ file.data.timestamp | date:'short' }}
+      <ul class="list">
+        <li *ngFor="let file of files" (click)="open(file)" style="cursor: pointer;" [ngClass]="{selected: videoUrl == 'http://localhost:420/' + file.name}">
+          {{ file.data.timestamp | date:'dd/MM/yy HH:mm:ss' }}
         </li>
-      </ol>
+      </ul>
     </div>
 
   </div>

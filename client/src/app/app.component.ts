@@ -57,7 +57,7 @@ export class AppComponent {
 
       this.videoUrl = `http://localhost:420/${file.name}`;
 
-    }, 100);
+    }, 1);
 
   }
 

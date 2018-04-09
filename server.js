@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.static('./client/dist'));
 
-app.use(express.static('./surveilance'));
+app.use(express.static(environment.surveilanceFolder));
 
 const b = new Promise((res, rej) => {
   res();
@@ -44,6 +44,22 @@ app.get('/', function (req, res) {
 });
 
 
+app.get('/record', function (req, res) {
+
+  console.log("GET req", req.body)
+
+  res.send(req.body);
+
+});
+
+
+app.post('/record', function (req, res) {
+
+  console.log("POST req", req.body)
+
+  res.send(req.body);
+
+});
 
 app.get('/user/:id', function (req, res) {
 
@@ -51,7 +67,7 @@ app.get('/user/:id', function (req, res) {
 
   fs.readdir(environment.surveilanceFolder, (err, files) => {
 
-    res.send(files ? files.map(filneName => {
+    res.send(files ? files.sort().reverse().map(filneName => {
       return {
         name: filneName,
         path: `${environment.surveilanceFolder}/${filneName}`
