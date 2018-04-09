@@ -1,0 +1,17 @@
+<button (click)="reload()">RELOAD</button>
+
+<div *ngIf="files">
+  <ol>
+    <li *ngFor="let file of files" (click)="open(file)">
+      {{ file.data.timestamp | date:'short' }} - {{ file.name }}
+    </li>
+  </ol>
+</div>
+
+<div *ngIf="videoUrl">
+
+  <video width="320" height="240" controls>
+    <source [src]="videoUrl" type="video/mp4">
+  </video>
+
+</div>
